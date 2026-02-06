@@ -90,7 +90,7 @@ async def get_ai_reply(user_text: str) -> str:
     }
 
     payload = {
-        "model": "deepseek/deepseek-r1-0528:free",
+        "model": "openrouter/free",
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_text},
@@ -177,5 +177,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
