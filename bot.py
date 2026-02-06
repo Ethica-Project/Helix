@@ -90,7 +90,7 @@ async def get_ai_reply(user_text: str) -> str:
     }
 
     payload = {
-        "model": "openrouter/free",
+        "model": "qwen/qwen3-coder:free",
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_text},
@@ -177,6 +177,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
