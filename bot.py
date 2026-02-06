@@ -28,7 +28,7 @@ async def get_ai_reply(user_text):
     }
 
     data = {
-        "model": "arcee-ai/trinity-large-preview:free",
+        "model": "nvidia/nemotron-3-nano-30b-a3b:free",
         "messages": [
             {
                 "role": "system",
@@ -135,6 +135,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
