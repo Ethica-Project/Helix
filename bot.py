@@ -130,7 +130,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.message.from_user
     user_text = update.message.text
 
-    # Admin log
+    # Admin log (optional)
     try:
         await context.bot.send_message(
             chat_id=ADMIN_ID,
@@ -149,15 +149,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         reply = await get_ai_reply(user_text)
 
-        safe_reply = escape_html(reply)
-
+        # 🔒 Telegram-safe plain text
         await update.message.reply_text(
-            f"<pre><code>{safe_reply}</code></pre>",
-            parse_mode="HTML"
+            reply,
+            disable_web_page_preview=True
         )
 
     except Exception as e:
-        logging.exception(e)
+        print("Telegram send error:", e)
         await update.message.reply_text(
             "⚠️ Something went wrong. Please try again."
         )
@@ -178,4 +177,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
