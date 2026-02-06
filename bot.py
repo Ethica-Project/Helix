@@ -142,13 +142,20 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ),
         )
     except Exception:
-        pass  # admin logging is optional
+        pass
 
     await update.message.reply_chat_action("typing")
 
     try:
         reply = await get_ai_reply(user_text)
-        await update.message.reply_text(reply)
+
+        safe_reply = escape_html(reply)
+
+        await update.message.reply_text(
+            f"<pre><code>{safe_reply}</code></pre>",
+            parse_mode="HTML"
+        )
+
     except Exception as e:
         logging.exception(e)
         await update.message.reply_text(
@@ -171,3 +178,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
