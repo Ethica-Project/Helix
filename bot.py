@@ -28,7 +28,7 @@ async def get_ai_reply(user_text):
     }
 
     data = {
-        "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+        "model": "deepseek/deepseek-r1-0528:free",
         "messages": [
             {
                 "role": "system",
@@ -135,6 +135,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
